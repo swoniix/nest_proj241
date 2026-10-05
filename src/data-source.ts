@@ -9,9 +9,9 @@ export default new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
 
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
   entities: ['src/**/*.entity.ts', 'src/**/entities/*.entity.ts'],
   migrations: ['src/migrations/*.ts'],
 });

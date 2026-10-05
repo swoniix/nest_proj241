@@ -19,6 +19,7 @@ import { CategoryService } from './category.service.js';
 import { CategoryCreateReqDto } from './dtos/category_create.req.dto.js';
 import { CategoryGetResDto } from './dtos/category_get.res.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
+import { Public } from '../auth/decorators/public.decorator.js';
 
 const categoryImageDirectory = join(process.cwd(), 'uploads', 'categories');
 const imageExtensions: Record<string, string> = {
@@ -30,7 +31,7 @@ const imageExtensions: Record<string, string> = {
 
 @Controller('category')
 export class CategoryController {
-  constructor(private readonly categoryService: CategoryService) {}
+  constructor(private readonly categoryService: CategoryService) { }
 
   // @Get()
   // getAllCategories(): CategoryGetResDto[] {
@@ -47,7 +48,7 @@ export class CategoryController {
   //   return category;
   // }
 
-  @Roles('admin')
+  // @Roles('admin')
   @Post()
   @UseInterceptors(
     FileInterceptor('image', {
@@ -92,7 +93,7 @@ export class CategoryController {
     const created = await this.categoryService.create(category);
     return created;
   }
-
+  @Public()
   @Get()
   async getAllCategory(): Promise<CategoryGetResDto[]> {
     return await this.categoryService.findAll();

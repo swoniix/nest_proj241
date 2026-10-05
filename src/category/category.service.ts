@@ -7,6 +7,12 @@ import { CategoryGetResDto } from './dtos/category_get.res.dto.js';
 
 @Injectable()
 export class CategoryService {
+  getCategories(): CategoryGetResDto[] {
+    throw new Error('Method not implemented.');
+  }
+  getCategoryById(arg0: number): CategoryGetResDto | undefined {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectRepository(Category)
     private readonly _repository: Repository<Category>,

@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user.module.js';
 import { RoleModule } from './role/role.module.js';
 import { AuthModule } from './auth/auth.module.js';
+import { ProductModule } from './product/product.module.js';
 
 @Module({
   imports: [
@@ -23,17 +24,15 @@ import { AuthModule } from './auth/auth.module.js';
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
-        ssl: {
-          rejectUnauthorized: false,
-        },
       }),
     }),
     CategoryModule,
     UserModule,
     RoleModule,
     AuthModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
