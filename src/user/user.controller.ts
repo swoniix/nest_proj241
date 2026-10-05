@@ -16,29 +16,37 @@ import { Roles } from '../auth/decorators/roles.decorator.js';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Roles('admin')
+  // @Roles('admin')
   @Post()
   create(@Body() createUserDto: CreateUserReqDto) {
     return this.userService.create(createUserDto);
   }
 
+  // Homework 30.09: GET-запит для отримання всіх користувачів
   @Get()
   findAll() {
+    // Тут отримуємо список усіх користувачів
     return this.userService.findAll();
   }
 
+  // Homework 30.09: GET-запит для отримання користувача за id
   @Get(':id')
   findOne(@Param('id') id: string) {
+    // Тут отримуємо одного користувача за його id
     return this.userService.findOne(+id);
   }
 
+  // Homework 30.09: PATCH-запит для оновлення користувача
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    // Тут оновлюємо тільки ті поля, які прийшли у запиті
     return this.userService.update(+id, updateUserDto);
   }
 
+  // Homework 30.09: DELETE-запит для видалення користувача
   @Delete(':id')
   remove(@Param('id') id: string) {
+    // Тут видаляємо користувача за id
     return this.userService.remove(+id);
   }
 }
