@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module.js';
 import { RoleModule } from './role/role.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { ProductModule } from './product/product.module.js';
+import { LocationModule } from './location/location.module.js';
 
 @Module({
   imports: [
@@ -31,8 +32,9 @@ import { ProductModule } from './product/product.module.js';
     RoleModule,
     AuthModule,
     ProductModule,
+    LocationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

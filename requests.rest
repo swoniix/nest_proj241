@@ -6,3 +6,21 @@ Content-Type: application/json
     "image" : "fruits.png",
     "parent_id" : null
 }
+
+### Countries
+GET http://localhost:3000/location/countries
+
+### Cities of a country
+GET http://localhost:3000/location/countries/1/cities
+
+### Create or update a delivery address
+PUT http://localhost:3000/user/1/delivery-address
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "address": "Khreshchatyk Street, 1",
+    "postal_code": "01001",
+    "country_id": 1,
+    "city_id": 1
+}

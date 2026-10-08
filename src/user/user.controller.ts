@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { UserService } from './user.service.js';
 import { CreateUserReqDto } from './dto/create-user.req.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
+import { UpdateDeliveryAddressDto } from './dto/update-delivery-address.dto.js';
 
 @Controller('user')
 export class UserController {
@@ -41,6 +43,14 @@ export class UserController {
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     // Тут оновлюємо тільки ті поля, які прийшли у запиті
     return this.userService.update(+id, updateUserDto);
+  }
+
+  @Put(':id/delivery-address')
+  updateDeliveryAddress(
+    @Param('id') id: string,
+    @Body() updateAddressDto: UpdateDeliveryAddressDto,
+  ) {
+    return this.userService.updateDeliveryAddress(+id, updateAddressDto);
   }
 
   // Homework 30.09: DELETE-запит для видалення користувача
